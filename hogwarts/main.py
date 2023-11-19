@@ -1,3 +1,5 @@
+from hogwarts.connection_db import session
+
 
 
 def main():
@@ -5,4 +7,4 @@ def main():
 
 
 if __name__ == "__main__":
-    pass
+    main()

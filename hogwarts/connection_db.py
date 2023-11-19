@@ -2,10 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import configparser
 import pathlib
-from pkg_resources import resource_filename
+# from pkg_resources import resource_filename
 
-# file_config = pathlib.Path(__file__).parent.joinpath("config.ini")
-file_config = pathlib.Path(resource_filename("hogwarts", "config.ini"))
+path = pathlib.Path(__file__).parent.joinpath("config.ini")
+# path = resource_filename("hogwarts", "config.ini")
+file_config = pathlib.Path(path)
 config = configparser.ConfigParser()
 config.read(file_config)
 
@@ -19,4 +20,4 @@ url = f"postgresql://{user}:{password}@{domain}:{port}/{db_name}"
 
 engine = create_engine(url, echo=False)
 DBsession = sessionmaker(bind=engine)
-session = DBsession
+session = DBsession()
